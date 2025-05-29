@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #000;
+        }
+    
+        h1 {
+            font-size: 14pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: #000066;
+        }
+    
+        .section-title {
+            font-weight: bold;
+            font-size: 12pt;
+            text-decoration: underline;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .color-blue {
+            color: #000066;
+        }
+    
+        ul {
+            margin-left: 20px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            line-height: 0.8;
+        }
+    
+        table, th, td {
+            border: 1px solid black;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            text-align: left;
+        }
+    
+        td, th {
+            padding: 6px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .pl-4 {
+            padding-left: 40px;
+        }
+
+        .pl-6 {
+            padding-left: 60px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+        }
+    </style>
+    
+</head>
+<body>
+
+    <div class="logo-container">
+        <img src="http://localhost:8000/static/images/axa_logo.svg" class="logo" alt="Logo Axa">
+    </div>
+
+    <h1>TARIFICATION INDICATIVE</h1>
+
+    <div class="section">
+        <strong class="color-blue">Produit chantier</strong><br>
+        Tarification indicative (*) sur la base d’un risque conforme aux paramètres suivants :<br>
+        Type d’ouvrage : {{ type_ouvrage }}<br>
+        Types de travaux réalisés : {{ types_travaux }}<br>
+        Coût du chantier : {{ cout_chantier }} €<br>
+        Présence d’existant : {{ existant }}<br>
+        Garantie choisie : {{ garantie }}<br>
+        Description de l’ouvrage : {{ description }}<br>
+        Adresse du chantier : {{ adresse }}<br>
+    </div>
+
+    <div class="section">
+        <span class="underline">Garanties Tous Risques chantier</span><br>
+        <strong>MONTANTS DE GARANTIES (exprimés en €)</strong><br>
+        <table>
+            <colgroup>
+                <col span="1" style="width: 70%;">
+                <col span="1" style="width: 30%;">
+            </colgroup>
+            <tr>
+                <td>
+                    Dommages matériels à l'ouvrage<br>
+                    (Ce montant est épuisable pendant la durée des travaux)
+                </td>
+            <td>{{ dommages_ouvrage }}</td></tr>
+            <tr><td>
+                    Responsabilité civile (tous dommages confondus)<br>
+                    (Ces montants sont épuisables pendant la durée des travaux)
+                </td>
+            <td>{{ responsabilite_civile }}</td></tr>
+            <tr>
+                <td>
+                    Maintenance-visite<br>
+                    (Ce montant est compris dans le montant de la garantie des dommages matériels
+                    à l&#39;ouvrage)
+                </td>
+                <td>{{ maintenance }}</td></tr>
+            <tr><td>Mesure conservatoire</td><td>{{ mesure_conservatoire }}</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <strong>MONTANTS DE FRANCHISES (par sinistre exprimés en €)</strong><br><br>
+        <table>
+            <colgroup>
+                <col span="1" style="width: 70%;">
+                <col span="1" style="width: 30%;">
+            </colgroup>
+            <tr><td>Dommages subis par les ouvrages de bâtiment</td><td>{{ franchise_ouvrage }}</td></tr>
+            <tr>
+                <td>Catastrophes naturelles</td>
+                <td> Montant déterminé par la loi ou par ses textes d&#39;application</td>
+            </tr>
+            <tr><td>Responsabilité civile (1)</td><td></td></tr>
+            <tr><td class="pl-4">- Assuré maître d&#39;ouvrage</td><td>xxxxxxxxxxxx</td></tr>
+            <tr><td class="pl-4">- Assuré maître d&#39;ouvrage</td><td>SANS</td></tr>
+            <tr><td>Maintenance-visite</td><td>{{ franchise_maintenance }}</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <span class="pl-6">(1) Ces franchises s&#39;appliquent pour des dommages autres que corporels</span><br><br>
+        Date de simulation de tarif : le {{ date_simulation }}<br>
+        <small>(*) Cette tarification est faite sous réserve d’acceptation du risque par la compagnie.</small>
+    </div>
+</body>
+</html>
